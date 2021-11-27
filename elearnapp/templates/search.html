@@ -1,0 +1,143 @@
+{% extends "header.html" %}
+{% block container %}
+{% load static %}
+
+<div class="p-5 mt-3"></div>
+
+
+<div class="container mt-3">
+    <h1 class="">Courses Library</h1>
+</div>
+
+ <!-- Start Products -->
+ <section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-12">
+                <div class="card border-0 sidebar sticky-bar">
+                    <div class="card-body p-0">
+                        <!-- SEARCH -->
+                        <div class="widget">
+                            <!-- SEARCH -->
+                            <div class="widget">
+                                <form action='/courses_search' method="get">
+                                    <div class="input-group mb-3 border rounded">
+                                        <input type="text" id="s" name="s" class="form-control border-0" placeholder="Search Keywords...">
+                                        <button type="submit" class="input-group-text bg-white border-0" id="searchsubmit"><i class="uil uil-search"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            <!-- SEARCH -->
+                        </div>
+                        <!-- SEARCH -->
+
+                        <!-- Categories -->
+                        <div class="widget mt-4 pt-2">
+                            <h5 class="widget-title">Categories</h5>
+                            <ul class="list-unstyled mt-4 mb-0 blog-categories">
+                                <li><a href="jvascript:void(0)">Data Science</a></li>
+                                <li><a href="jvascript:void(0)">Data Analytics</a></li>
+                                <li><a href="jvascript:void(0)">Machine Learning</a></li>
+                                <li><a href="jvascript:void(0)">Deep Learning</a></li>
+                                <li><a href="jvascript:void(0)">Python Programming</a></li>
+                                <li><a href="jvascript:void(0)">Web Develepment</a></li>
+                                <li><a href="jvascript:void(0)">PHP</a></li>
+                                <li><a href="jvascript:void(0)">React</a></li>
+                            </ul>
+                        </div>
+                        <!-- Categories -->
+
+                        
+                    </div>
+                </div>
+            </div><!--end col-->
+
+            <div class="col-lg-9 col-md-8 col-12 mt-5 pt-2 mt-sm-0 pt-sm-0">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 col-md-7">
+                        <div class="section-title">
+                            <h4>Course List</h4>
+                        </div>
+                    </div><!--end col-->
+
+                    <div class="col-lg-4 col-md-5 mt-4 mt-sm-0 pt-2 pt-sm-0">
+                        <div class="d-flex justify-content-md-between align-items-center">
+                            <div class="form custom-form">
+                                <div class="mb-0">
+                                    <select class="form-select form-control" aria-label="Default select example" id="Sortbylist-job">
+                                        <option selected>Sort by latest</option>
+                                        <option>Sort by popularity</option>
+                                        <option>Sort by rating</option>
+                                        <option>Sort by price: low to high</option>
+                                        <option>Sort by price: high to low</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!--end col-->
+                </div><!--end row-->
+
+
+                {% if error %}
+                        <div class="col mt-4">
+                            <center>
+                                <img src="{% static 'images/no-result.png' %}" alt="" class="img-fluid m-auto">
+                            </center>
+
+                        </div>
+                {% endif %}
+                {% for i in course_data %}
+
+                <div class="row">
+                    <div class="col-12 mt-4 pt-2">
+                        <div class="card shop-list border-0 shadow position-relative">
+                            <div class="row align-items-center g-0">
+                                <div class="col-lg-4 col-md-6">
+                                    <!-- <div class="shop-image position-relative overflow-hidden"> -->
+                                        <a href="/courses_view?id={{course_data.0.Id}}"><img src='{% static "images/course_images/" %}{{course_data.0.CourseImage}}' class="img-fluid" alt=""></a>
+                                        
+                                    <!-- </div> -->
+                                </div><!--end col-->
+
+                                <div class="col-lg-8 col-md-6">
+                                    <div class="card-body content p-4">
+                                        <a href="/courses_view?id={{course_data.0.Id}}" class="text-dark product-name h6">{{course_data.0.CourseName}}</a>
+                                        <div class="d-lg-flex align-items-center mt-2 mb-3">
+                                            <h6 class="text-muted small fst-italic mb-0 me-3"> $ {{course_data.0.OfferPrice}} <del class="text-danger ms-2"> ${{course_data.0.ActualPrice}}</del> </h6>
+                                            <ul class="list-unstyled text-warning mb-0">
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                                <li class="list-inline-item"><i class="fa fa-star"></i></li>
+                                            </ul>
+                                        </div>
+                                        <p class="para-desc text-muted mb-1">{{course_data.0.CourseOverview}}</p>
+                                        
+                                        <div class="mt-4">
+                                            <a href="/courses_view?id={{course_data.0.Id}}" class="btn btn-primary">View Details</a>
+                                        </div>
+                                    </div>
+                                </div><!--end col-->
+                            </div> <!--end row-->
+                        </div><!--end blog post-->
+                    </div><!--end col-->
+                    
+                    
+                </div><!--end row-->
+
+                {% endfor %}
+
+            </div><!--end col-->
+        </div><!--end row-->
+    </div><!--end container-->
+</section><!--end section-->
+<!-- End Products -->
+
+<div class="p-5 mt-5"></div>
+
+
+{% endblock container %}
+
+    

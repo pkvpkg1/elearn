@@ -1,0 +1,31 @@
+{% extends "header.html" %}
+{% block container %}
+{% load static %}
+
+<div class="p-2"></div>
+
+
+
+
+<section class="section pb-0">
+    <div class="container m-auto">
+        <center>
+            <div class="mt-sm-5">
+                <img class="col-sm-2" src="{% static 'images/tick.gif' %}" alt="" class="img-thumbnail">
+                <h1 class="mt-4">Your Order Successfully Completed</h1>
+                <h4 class="mt-4">Order id : {{razorpay_order_id}}</h4>
+                <a href="/my_courses/" class="btn btn-success mt-4">Go to Course</a>
+                
+            </div>
+        </center>
+    </div><!--end container-->
+
+</section><!--end section-->
+
+
+<div class="p-5 mt-5"></div>
+
+
+{% endblock container %}
+
+    

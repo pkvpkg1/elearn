@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="utf-8" />
+    <title>E-Learn</title>
+    <link href='{% static "css/bootstrap.min.css" %}' rel="stylesheet" type="text/css" />
+    <link href=' {% static "css/tobii.min.css" %}' rel="stylesheet" type="text/css" />
+    <link href='{% static "css/materialdesignicons.min.css" %}' rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v3.0.6/css/line.css">
+    <link rel="stylesheet" href='{% static "css/tiny-slider.css" %}'/> 
+    <link href='{% static "css/style.min.css" %}' rel="stylesheet" type="text/css" id="theme-opt" />
+    <link href='{% static "css/colors/default.css" %}' rel="stylesheet" id="color-opt">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <style>
+        #course_content{
+            box-shadow:0px 0px 5px #ccc;
+            border-radius:5px !important;
+        }
+    </style>
+
+
+<div class="container-fluid p-2 bg-primary">
+    <div class="row">
+        <div class="col">
+            <h5 class="text-white ml-4">{{course_title}}</h5>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 p-3 m-2">
+
+            <iframe width="100%" style="height:70vh" src="{{video_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="text-center mt-4">For any queries contact us at skype : support@learning.ai (Timings : 8 AM IST to 2 AM IST). For mail & interview preparation support drop us mail at query@learning.ai
+
+            </p>
+        </div>
+        <div class="col p-3 m-2">
+            <h5 class="">Course Content</h5>
+
+            {% for i in df_course_videos_data %}
+            <div id='course_content' class="col p-2 m-1 mt-3">
+                <div class="row">
+                        <div class="col">
+                            <a href="/course_video_watch/?id={{id_get}}&vid_id={{i.id}}" class="">{{i.Topic_Name}}</a>
+                        </div>
+                    <div class="col-1">
+                        <i class="fa fa-star"></i>                    
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+
+        </div>
+    </div>
+
+</div>

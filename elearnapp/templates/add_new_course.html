@@ -1,0 +1,186 @@
+{% extends "admin_header.html" %}
+{% block container %}
+{% load static %}
+    <div class="p-5">
+
+    </div>
+    <div class="container mt-sm-4">
+        
+        <h2>Add New Courses</h2>
+
+        <div class="container-fluid p-1 mb-5 mt-4">
+            <form action="/order_confirm/" id="add_new_course" method="post">
+                {% csrf_token %}
+            <div class="col-lg-12">
+                <div class="mb-3">
+                    <label class="form-label">Course Name <span class="text-danger">*</span></label>
+                    <div class="form-icon position-relative">
+                        <i data-feather="book" class="fea icon-sm icons"></i>
+                        <input type="text" class="form-control ps-5" placeholder="Enter Course Name" name="Course_Name" id="Course_Name" required="">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mt-4">
+                <div class="col-sm">
+                    <div class="mb-3">
+                        <label class="form-label">Start Date <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <i data-feather="clock" class="fea icon-sm icons"></i>
+                            <input type="date" class="form-control ps-5" name="Start_Date" id="Start_Date" required="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Class Starting Time<span class="text-danger">*</span></label>
+                                <div class="form-icon position-relative">
+                                    <input type="time" class="form-control ps-5" name="Class_Starting_Time" id="Class_Starting_Time" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Class Ending Time<span class="text-danger">*</span></label>
+                                <div class="form-icon position-relative">
+                                    <input type="time" class="form-control ps-5" name="Class_Ending_Time" id="Class_Ending_Time" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="row mt-4">
+                <div class="col-sm">
+                    <div class="mb-3">
+                        <label class="form-label"> Doubt Clearing Session <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <i data-feather="clock" class="fea icon-sm icons"></i>
+                            <input type="date" class="form-control ps-5" placeholder="Enter Doubt Clearing Session Day" name="Doubt_Clearing_Session" id="Doubt_Clearing_Session" required="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-sm">
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Starting Time<span class="text-danger">*</span></label>
+                                <div class="form-icon position-relative">
+                                    <input type="time" class="form-control ps-5" name="doubt_start_time" id="doubt_start_time" required="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Ending Time<span class="text-danger">*</span></label>
+                                <div class="form-icon position-relative">
+                                    <input type="time" class="form-control ps-5" name="doubt_end_time" id="doubt_end_time" required="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm">
+                    <div class="mb-3">
+                        <label class="form-label">Actual Price <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <i class="fea icon-sm icons fa fa-inr"></i>
+                            <input type="text" class="form-control ps-5" placeholder="Enter Actual Price" name="Actual_Price" id="Actual_Price" required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Offer Price <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <i class="fea icon-sm icons fa fa-inr"></i>
+                            <input type="text" class="form-control ps-5" placeholder="Enter Offer Price" name="Offer_Price" id="Offer_Price" required="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <label class="form-label">Course Overview<span class="text-danger">*</span></label>
+                <div class="form-icon position-relative">
+                    <i data-feather="book-open" class="fea icon-sm icons"></i>
+                    <textarea name="Overview" id="Overview" class="form-control ps-5" cols="30" rows="4"></textarea>
+                </div>
+            </div>
+
+
+            <div class="mb-3 mt-4">
+                <label class="form-label">Course Description<span class="text-danger">*</span></label>
+                <div class="form-icon position-relative">
+                    <i data-feather="book-open" class="fea icon-sm icons"></i>
+                    <textarea name="Description" id="Description" class="form-control ps-5" cols="30" rows="4"></textarea>
+                </div>
+            </div>
+
+            <div class="mb-3 mt-4">
+               <div class="row">
+                   <div class="col">
+                        <label class="form-label">Course Brochure <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <input type="file" name="file" class="form-control " id="file" class="">
+                        </div>
+                   </div>
+                   <div class="col">
+                    <label class="form-label">Catrgory <span class="text-danger">*</span></label>
+                    <select name="Catrgory" id="Catrgory" class="form-control">
+                        <option value="" selected disabled>Select Category</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Data Analytics">Data Analytics</option>
+                        <option value="Machine Learning">Machine Learning</option>
+                        <option value="Deep Learning">Deep Learning</option>
+                        <option value="Python Programming">Python Programming</option>
+                        <option value="Web Develepment">Web Develepment</option>
+                        <option value="PHP">PHP</option>
+                    </select>
+                </div>
+               </div>
+            </div>
+
+            <div class="mb-3 mt-4">
+                <div class="form-icon position-relative">
+                    <input type="submit" name="submit" class="btn btn-success " id="submit" class="">
+                </div>
+            </div>
+        </form>
+        </div>
+
+        <script type="text/javascript">
+            $( '#add_new_course' )
+              .submit( function( e ) {
+                e.preventDefault();
+                $.ajax( {
+                  url: '/admin_portal/add_new_course_ajax/',
+                  type: 'POST',
+                  data: new FormData( this ),
+                  processData: false,
+                  contentType: false,
+                  success: function(data)
+                   {
+                        swal("Success", "New Course Added Successfully!", "success");
+                   },
+                } );
+              } );
+            </script>
+        
+        
+    </div> <!--end container-->
+
+{% endblock container %}
+
+    

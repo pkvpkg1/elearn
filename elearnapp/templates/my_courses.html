@@ -1,0 +1,51 @@
+{% extends "header.html" %}
+{% block container %}
+{% load static %}
+
+<div class="p-5 mt-3"></div>
+
+<style>
+    #my_course{
+        box-shadow:0px 0px 5px #ccc !important;
+    }
+</style>
+
+<div class="container mt-3">
+    <h1 class="">My Courses</h1>
+</div>
+
+<div class="container">
+    
+    {% for i in course_data %}
+    <div id="my_course" class="col-lg-3 col-md-6 col-12 mt-4 pt-2 border border-1 p-3">
+        <div class="card shop-list border-0 position-relative">
+            
+            <div class="shop-image position-relative overflow-hidden rounded shadow">
+                <a href="shop-product-detail.html"><img src='{% static "images/course_images/" %}{{course_data.0.CourseImage}}' class="img-fluid" alt=""></a>
+                <a href="shop-product-detail.html" class="overlay-work">
+                    <img src='{% static "images/course_images/" %}{{course_data.0.CourseImage}}' class="img-fluid" alt="">
+                </a>
+            </div>
+            <div class="card-body content pt-4 p-2">
+                <a href="shop-product-detail.html" class="text-dark product-name h6">{{course_data.0.CourseName}}</a>
+               
+            </div>
+    
+            <div class="col">
+                <a href="/course_video_watch_first?id={{course_data.0.course_id}}" class="btn btn-primary form-control">Go to Course</a>
+            </div>
+    
+        </div>
+    </div><!--end col-->
+    
+    
+    {% endfor %}
+
+</div>
+
+<div class="p-5 mt-5"></div>
+
+
+{% endblock container %}
+
+    

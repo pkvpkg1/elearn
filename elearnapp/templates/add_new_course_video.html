@@ -1,0 +1,84 @@
+{% extends "admin_header.html" %}
+{% block container %}
+{% load static %}
+    <div class="p-5">
+
+    </div>
+    <div class="container mt-sm-4">
+        
+        <h2>Add New Video</h2>
+
+        <div class="container-fluid p-1 mb-5 mt-4">
+            <form action="/order_confirm/" id="add_new_course" method="post">
+                {% csrf_token %}
+            <div class="col-lg-12">
+                <div class="mb-3">
+                    <label class="form-label">Course Name <span class="text-danger">*</span></label>
+                    <div class="form-icon position-relative">
+                        <i data-feather="book" class="fea icon-sm icons"></i>
+                        <select name="Course_Name" id="" class="form-control ps-5">
+                            {% for course_datas in course_data  %}
+                            <option value="{{course_datas.id}}" class="">{{course_datas.CourseName}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row mt-5">
+                <div class="col-sm">
+                    <div class="mb-3">
+                        <label class="form-label">Topic Name <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <i class="fea icon-sm icons fa fa-plus-circle"></i>
+                            <input type="text" class="form-control ps-5" placeholder="Enter Topic Name" name="Topic_Name" id="Topic_Name" required="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Video Link  <span class="text-danger">*</span></label>
+                        <div class="form-icon position-relative">
+                            <i class="fea icon-sm icons fa fa-inr"></i>
+                            <input type="text" class="form-control ps-5" placeholder="Enter Video Link" name="video_link" id="video_link" required="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mb-3 mt-4">
+                <div class="form-icon position-relative">
+                    <input type="submit" name="submit" class="btn btn-success " id="submit" class="">
+                </div>
+            </div>
+        </form>
+        </div>
+
+        <script type="text/javascript">
+            $( '#add_new_course' )
+              .submit( function( e ) {
+                e.preventDefault();
+                $.ajax( {
+                  url: '/admin_portal/add_new_course_video_ajax/',
+                  type: 'POST',
+                  data: new FormData( this ),
+                  processData: false,
+                  contentType: false,
+                  success: function(data)
+                   {
+                        swal("Success", "Video Added Successfully!", "success");
+                   },
+                } );
+              } );
+            </script>
+        
+        
+    </div> <!--end container-->
+
+{% endblock container %}
+
+    
